@@ -1,0 +1,9 @@
+{
+  "gadget-01": {
+    "name": "Producto de prueba",
+    "packs": [
+      { "qty": 1, "price": 19.99 },
+      { "qty": 2, "price": 34.99 }
+    ]
+  }
+}

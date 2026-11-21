@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pedido contra entrega</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<main>
+  <h1 id="prod-name">Cargando…</h1>
+  <p class="sub">Envío a todo Ecuador · Pagas al recibir</p>
+  <form id="form" novalidate>
+    <fieldset id="packs"></fieldset>
+    <label>Nombres<input name="first_names" autocomplete="given-name"></label>
+    <label>Apellidos<input name="last_names" autocomplete="family-name"></label>
+    <label>Celular<input name="phone" type="tel" inputmode="numeric" placeholder="0987654321" autocomplete="tel"></label>
+    <label>Provincia<select name="province"></select></label>
+    <label>Ciudad<input name="city" autocomplete="address-level2"></label>
+    <label>Dirección<input name="address" placeholder="Calle principal y secundaria" autocomplete="street-address"></label>
+    <label>Referencia<input name="reference" placeholder="Casa blanca, portón negro"></label>
+    <label>Correo (opcional)<input name="email" type="email" autocomplete="email"></label>
+    <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <p id="msg" role="alert"></p>
+    <button id="btn" type="submit">Confirmar pedido — Pago al recibir</button>
+  </form>
+</main>
+<script src="js/config.js"></script>
+<script src="js/tracking.js"></script>
+<script src="js/form.js"></script>
+</body>
+</html>
