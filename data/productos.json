@@ -1,9 +1,20 @@
 {
-  "gadget-01": {
-    "name": "Producto de prueba",
+  "triple-magnesio": {
+    "name": "Triple Magnesio Quelado + Zinc + Selenio",
+    "subtitle": "3 formas de magnesio en un solo frasco · 120 cápsulas vegetales · 30 días",
+    "images": ["img/frasco-1.jpg", "img/frasco-2.jpg", "img/frasco-3.jpg"],
+    "bullets": [
+      "Magnesio elemental 300 mg por porción (malato, bisglicinato y taurinato)",
+      "Con zinc (10 mg) y selenio (110 mcg) por porción",
+      "100% vegano · cápsulas vegetales",
+      "Sello de seguridad en la tapa",
+      "Modo de uso: 4 cápsulas máximo al día (según el fabricante)"
+    ],
+    "notice": "Complemento alimenticio. No es un medicamento ni reemplaza una alimentación equilibrada. No recomendado en menores de 15 años, embarazo o lactancia, salvo indicación de un profesional de la salud.",
     "packs": [
-      { "qty": 1, "price": 19.99 },
-      { "qty": 2, "price": 34.99 }
+      { "qty": 1, "price": 24.99 },
+      { "qty": 2, "price": 44.98 },
+      { "qty": 3, "price": 62.97 }
     ]
   }
 }
