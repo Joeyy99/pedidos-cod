@@ -64,13 +64,15 @@
     btn.disabled = true; msg.textContent = 'Enviando…';
     try {
       const r = await fetch(CONFIG.WEBHOOK_URL, {
-        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
+      method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify(payload)
       });
       const data = await r.json();
       if (!r.ok || !data.ok) throw new Error(data.error || 'error');
       goWhatsApp(data.order_id, pack);
     } catch (x) {
-      btn.disabled = false; msg.textContent = 'No pudimos enviar tu pedido. Intenta de nuevo.';
+    const cu = payload.customer;
+    const t = `Hola, quiero pedir ${product.name} (${pack.qty} und.). ${cu.first_names} ${cu.last_names}, cel ${cu.phone}, ${cu.province}, ${cu.city}, ${cu.address} (${cu.reference})`;
+    location.href = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent(t)}`;
     }
   });
 
