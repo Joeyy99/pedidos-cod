@@ -3,18 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Triple Magnesio Quelado + Zinc + Selenio</title>
-<link rel="stylesheet" href="css/styles.css">
+<title>JoeyStore</title>
+<link rel="stylesheet" href="css/styles.css?v=3">
 </head>
 <body>
-<main>
+<div class="bar">💵 Pago contra entrega · 📍 Entrega a domicilio en Quito</div>
+<header><b id="store">JoeyStore</b><a href="#pedido">Pedir</a></header>
+
+<section class="hero">
   <div id="gallery"></div>
-  <h1 id="prod-name">Cargando…</h1>
-  <p class="sub" id="prod-sub"></p>
-  <ul id="bullets"></ul>
-  <p class="local">📍 Entrega a domicilio solo en Quito (Pichincha) · Pagas al recibir</p>
+  <div>
+    <h1 id="prod-name">Cargando…</h1>
+    <p class="tag" id="tagline"></p>
+    <p class="sub" id="prod-sub"></p>
+    <div class="pricebox">
+      <div><small>Cada uno</small><b id="p-each"></b></div>
+      <div><small id="p-label"></small><b id="p-pack"></b><em id="p-save"></em></div>
+    </div>
+    <a class="btn" href="#pedido">QUIERO ELEGIR MI PACK →</a>
+  </div>
+</section>
+
+<section class="trust">
+  <div>💵 <b>Pagas al recibir</b></div>
+  <div>📍 <b>Entrega en Quito</b></div>
+  <div>💬 <b>Confirmamos por WhatsApp</b></div>
+</section>
+
+<section><div class="cards" id="highlights"></div></section>
+
+<section>
+  <h2>Conoce lo que eliges</h2>
+  <div class="info" id="info"></div>
+</section>
+
+<section id="pedido" class="order">
+  <h2>Prepara tu pedido</h2>
   <form id="form" novalidate>
-    <h2>Elige tu pack</h2>
     <fieldset id="packs"></fieldset>
     <label>Nombres<input name="first_names" autocomplete="given-name"></label>
     <label>Apellidos<input name="last_names" autocomplete="family-name"></label>
@@ -25,13 +50,18 @@
     <input type="hidden" name="province" value="Pichincha">
     <input type="hidden" name="city" value="Quito">
     <input name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <div class="total"><span>Total a pagar al recibir</span><b id="total"></b></div>
     <p id="msg" role="alert"></p>
-    <button id="btn" type="submit">Confirmar pedido — Pago al recibir</button>
+    <button id="btn" type="submit">PEDIR Y PAGAR AL RECIBIR</button>
   </form>
-  <p class="notice" id="notice"></p>
-</main>
-<script src="js/config.js"></script>
-<script src="js/tracking.js"></script>
-<script src="js/form.js"></script>
+  <a class="wa" id="wa" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>
+</section>
+
+<footer><p id="notice"></p><p>© JoeyStore</p></footer>
+<div class="sticky"><a class="btn" href="#pedido">PEDIR AHORA</a></div>
+
+<script src="js/config.js?v=3"></script>
+<script src="js/tracking.js?v=3"></script>
+<script src="js/form.js?v=3"></script>
 </body>
 </html>
