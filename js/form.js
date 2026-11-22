@@ -23,7 +23,8 @@
   $('#gallery').innerHTML = (product.images || []).map(s => `<img src="${s}" alt="${product.name}" loading="lazy">`).join('');
   $('#highlights').innerHTML = (product.highlights || []).map(h => `<div class="card"><span>${h.icon}</span><b>${h.title}</b><p>${h.text}</p></div>`).join('');
   $('#info').innerHTML = (product.info || []).map(i => `<div class="row"><b>${i.title}</b><span>${i.text}</span></div>`).join('');
-  $('#wa').href = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent('Hola ' + CONFIG.STORE + ', quiero información de ' + product.name)}`;
+  const waUrl = `https://wa.me/${CONFIG.WHATSAPP}?text=${encodeURIComponent('Hola ' + CONFIG.STORE + ', quiero información de ' + product.name)}`;
+  document.querySelectorAll('.wa-link').forEach(a => { a.href = waUrl; });
 
   const base = product.packs[0].price, def = product.packs.length > 1 ? 1 : 0, rec = product.packs[def];
   $('#p-each').textContent = money(base);
@@ -50,18 +51,27 @@
   }
   const host = u => { try { return new URL(u).hostname; } catch (e) { return ''; } };
 
+  form.addEventListener('input', e => e.target.classList.remove('bad'));
   form.addEventListener('submit', async e => {
     e.preventDefault();
     const f = Object.fromEntries(new FormData(form));
     const phone = normalizePhone(f.phone);
-    const err =
-      f.first_names.trim().length < 2 ? 'Escribe tus nombres.' :
-      f.last_names.trim().length < 2 ? 'Escribe tus apellidos.' :
-      !/^09\d{8}$/.test(phone) ? 'El celular debe tener 10 dígitos y empezar con 09.' :
-      f.address.trim().length < 10 ? 'Escribe una dirección más completa.' :
-      f.reference.trim().length < 3 ? 'Agrega una referencia.' :
-      (f.email && !/^\S+@\S+\.\S+$/.test(f.email)) ? 'El correo no es válido.' : '';
-    if (err) { msg.textContent = err; return; }
+        form.querySelectorAll('.bad').forEach(el => el.classList.remove('bad'));
+    const checks = [
+      ['first_names', f.first_names.trim().length < 2, 'Escribe tus nombres.'],
+      ['last_names', f.last_names.trim().length < 2, 'Escribe tus apellidos.'],
+      ['phone', !/^09\d{8}$/.test(phone), 'El celular debe tener 10 dígitos y empezar con 09.'],
+      ['address', f.address.trim().length < 10, 'Escribe una dirección más completa.'],
+      ['reference', f.reference.trim().length < 3, 'Agrega una referencia.'],
+      ['email', !!f.email && !/^\S+@\S+\.\S+$/.test(f.email), 'El correo no es válido.']
+    ];
+    const fail = checks.find(c => c[1]);
+    if (fail) {
+      const el = form.elements[fail[0]];
+      el.classList.add('bad'); el.focus();
+      msg.textContent = fail[2];
+      return;
+    }
     if (f.website) { msg.textContent = '¡Gracias!'; return; }
 
     const pack = product.packs[+f.pack], T = window.TRACKING || {};
