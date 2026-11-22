@@ -39,13 +39,15 @@
 
 <section id="pedido" class="order">
   <h2>Prepara tu pedido</h2>
+  <p class="help">¿Tienes dudas? <a class="wa-link" target="_blank" rel="noopener">Pide información por WhatsApp a JoeyStore</a> antes de ordenar.</p>
   <form id="form" novalidate>
+    <p class="hint"><span class="req">*</span> Campos obligatorios</p>
     <fieldset id="packs"></fieldset>
-    <label>Nombres<input name="first_names" autocomplete="given-name"></label>
-    <label>Apellidos<input name="last_names" autocomplete="family-name"></label>
-    <label>Celular<input name="phone" type="tel" inputmode="numeric" placeholder="0987654321" autocomplete="tel"></label>
-    <label>Dirección<input name="address" placeholder="Calle principal y secundaria" autocomplete="street-address"></label>
-    <label>Referencia<input name="reference" placeholder="Casa blanca, portón negro"></label>
+    <label>Nombres <span class="req">*</span><input name="first_names" autocomplete="given-name" required></label>
+    <label>Apellidos <span class="req">*</span><input name="last_names" autocomplete="family-name" required></label>
+    <label>Celular <span class="req">*</span><input name="phone" type="tel" inputmode="numeric" placeholder="0987654321" autocomplete="tel" required></label>
+    <label>Dirección <span class="req">*</span><input name="address" placeholder="Calle principal y secundaria" autocomplete="street-address" required></label>
+    <label>Referencia <span class="req">*</span><input name="reference" placeholder="Casa blanca, portón negro" required></label>
     <label>Correo (opcional)<input name="email" type="email" autocomplete="email"></label>
     <input type="hidden" name="province" value="Pichincha">
     <input type="hidden" name="city" value="Quito">
@@ -54,7 +56,7 @@
     <p id="msg" role="alert"></p>
     <button id="btn" type="submit">PEDIR Y PAGAR AL RECIBIR</button>
   </form>
-  <a class="wa" id="wa" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>
+  <a class="wa wa-link" target="_blank" rel="noopener">💬 Consultar por WhatsApp</a>
 </section>
 
 <footer><p id="notice"></p><p>© JoeyStore</p></footer>
